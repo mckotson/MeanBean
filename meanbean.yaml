@@ -8,6 +8,7 @@ dependencies:
   - matplotlib
   - scipy
   - jupyter
+  - numba
   - pip:
     - pynput
     - opencv-python
