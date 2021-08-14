@@ -13,3 +13,4 @@ dependencies:
     - pynput
     - opencv-python
     - gym
+    - -e ./BeanMachine
