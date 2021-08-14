@@ -365,6 +365,9 @@ class BeanMachine():
 
         self.move_update(x1, y1, x2, y2)
 
+        # You get a point for hard dropping!
+        self.score += 1
+
         return 1
 
     def timer(self):
