@@ -437,12 +437,12 @@ class Machine():
         self.bean_change(change_list)
         self.update_display()
         time.sleep(seconds_per_frame)
-        self.bean_change(orig_list)
-        self.update_display()
-        time.sleep(seconds_per_frame)
-        self.bean_change(change_list)
-        self.update_display()
-        time.sleep(seconds_per_frame)
+        #self.bean_change(orig_list)
+        #self.update_display()
+        #time.sleep(seconds_per_frame)
+        #self.bean_change(change_list)
+        #self.update_display()
+        #time.sleep(seconds_per_frame)
 
         self.phase += 1
 
