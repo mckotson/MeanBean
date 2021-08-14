@@ -80,10 +80,10 @@ class BeanMachine():
         self.gameover = False
 
         # Set up and initialize display
-        self.display = 255*np.ones((13, 8, 3), dtype=int)
+        #self.display = 255*np.ones((13, 8, 3), dtype=int)
 
         # Gray out the right edge of the display (outside playing field)
-        self.display[:, -2:, :] = 100
+        #self.display[:, -2:, :] = 100
 
         # Create the first controlled beans
         self.next2 = self.new_bean()
@@ -129,16 +129,16 @@ class BeanMachine():
         """
         Display the next controllable bean on the right of the playing field.
         """
-        r1, g1, b1 = get_color(self.next2)
-        r2, g2, b2 = get_color(self.next1)
-
-        self.display[0, -1, 0] = r1
-        self.display[0, -1, 1] = g1
-        self.display[0, -1, 2] = b1
-
-        self.display[1, -1, 0] = r2
-        self.display[1, -1, 1] = g2
-        self.display[1, -1, 2] = b2
+    #    r1, g1, b1 = get_color(self.next2)
+    #    r2, g2, b2 = get_color(self.next1)
+    #
+    #    self.display[0, -1, 0] = r1
+    #    self.display[0, -1, 1] = g1
+    #    self.display[0, -1, 2] = b1
+    #
+    #    self.display[1, -1, 0] = r2
+    #    self.display[1, -1, 1] = g2
+    #    self.display[1, -1, 2] = b2
 
         self.timesteps = 0
 
@@ -174,8 +174,8 @@ class BeanMachine():
         while len(change_list) > 0:
             y, x, c = change_list.pop(0)
             self.field[y, x] = c
-            color = get_color(c)
-            self.display[y, x, :] = color
+            #color = get_color(c)
+            #self.display[y, x, :] = color
 
     def next_bean(self):
         """
