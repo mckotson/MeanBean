@@ -6,6 +6,9 @@ dependencies:
   - pip
   - numpy
   - matplotlib
+  - scipy
+  - jupyter
   - pip:
     - pynput
     - opencv-python
+    - gym
