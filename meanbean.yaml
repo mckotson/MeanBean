@@ -1,0 +1,11 @@
+name: meanbean
+dependencies:
+  - python=3.8
+  - ipython
+  - yaml
+  - pip
+  - numpy
+  - matplotlib
+  - pip:
+    - pynput
+    - opencv-python
