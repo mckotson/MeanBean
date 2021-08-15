@@ -38,7 +38,7 @@ class BeanGymEnv(gym.Env):
         5    Drop beans down one space
 
     Rewards:
-        - A reward of 1 is given for every step taken.
+        - [REMOVED] A reward of 1 is given for every step taken.
         - A reward of 1 is given for every hard drop.
         - Upon erasing beans, a reward is calculated 
         based on the number of beans erased and a combo
@@ -95,7 +95,7 @@ class BeanGymEnv(gym.Env):
 
         done = self.BeanMachine.gameover
 
-        reward += (not done)   # +0 if Game Over, else +1
+        #reward += (not done)   # +0 if Game Over, else +1
 
         return self.state, reward, done, {}
 
