@@ -29,21 +29,18 @@ def key_press(key, mod):
     # Check for key press and apply the appropriate actions
     global human_agent_action, human_sets_pause, human_wants_restart
 
-    # TEMPORARY
-    print(f'Key pressed: {key}')
-
     if key==0xff0d: human_wants_restart = True   # Enter key
     if key==32: human_sets_pause = True   # Space bar
 
-    if key==65361: human_agent_action = 1   # Left arrow key
-    if key==65363: human_agent_action = 2   # Right arrow key
-    if key==65364: human_agent_action = 5   # Down arrow key
-
-    print(f'Action: {human_agent_action}')
+    if key==65361: human_agent_action = 1   # Left arrow key = move left
+    if key==65363: human_agent_action = 2   # Right arrow key = move right
+    if key==65364: human_agent_action = 5   # Down arrow key = hard drop
+    if key==97:    human_agent_action = 3   # 'a' key = rotate counter-clockwise
+    if key==100:   human_agent_action = 4   # 'd' key = rotate clockwise
 
 def key_release(key, mod):
     global human_agent_action, human_sets_pause, human_wants_restart
-    if key in [65361, 65363, 65364]: human_agent_action = 0
+    if key in [65361, 65363, 65364, 97, 100]: human_agent_action = 0
 
 # Set up Gym environment and interactions
 env.reset()
@@ -80,7 +77,8 @@ def rollout(env):
         while human_sets_pause:
             env.render(mode=mode)
 
-    print(f"Timesteps: {total_steps}\nReward: {total_reward}")
+    print(f"Timesteps: {total_steps}, Reward: {total_reward}")
+    print()
 
 while 1:
     window_still_open = rollout(env)

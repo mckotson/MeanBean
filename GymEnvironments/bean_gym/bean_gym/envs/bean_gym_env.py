@@ -62,7 +62,7 @@ class BeanGymEnv(gym.Env):
         seed = self.seed()
 
         # TEMPORARY HARD-CODED INPUT VALUES
-        self.BeanMachine = BeanMachine(seed=seed, seconds_per_frame=0.1,
+        self.BeanMachine = BeanMachine(seed=seed[0], seconds_per_frame=0.1,
                                         frames_per_drop=3)
 
         # Set up action and observation spaces
@@ -121,6 +121,7 @@ class BeanGymEnv(gym.Env):
             self.blocks = []
 
             for x in range(6):
+                self.blocks.append([])
                 for y in range(13):
                     l = x*scale
                     r = (x+1)*scale
@@ -130,7 +131,7 @@ class BeanGymEnv(gym.Env):
                     block = rendering.FilledPolygon([(l, b), (l, t), (r, t), (r, b)])
 
                     self.viewer.add_geom(block)
-                    self.blocks.append(block)
+                    self.blocks[x].append(block)
 
         if self.state is None:
             return None
@@ -138,12 +139,11 @@ class BeanGymEnv(gym.Env):
         # Color each block according to its field value
         for x in range(6):
             for y in range(13):
-                i = 6*y + x
                 c = self.state[y,x]   # Color index
 
                 red,green,blue = bean_colors[c]
 
-                self.blocks[i].set_color(red, green, blue)
+                self.blocks[x][y].set_color(red, green, blue)
 
         return self.viewer.render(return_rgb_array=mode == 'rgb_array')
 
