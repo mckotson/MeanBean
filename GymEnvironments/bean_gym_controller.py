@@ -30,7 +30,7 @@ def key_press(key, mod):
     global human_agent_action, human_sets_pause, human_wants_restart
 
     if key==0xff0d: human_wants_restart = True   # Enter key
-    if key==32: human_sets_pause = True   # Space bar
+    if key==32: human_sets_pause = not human_sets_pause   # Space bar
 
     if key==65361: human_agent_action = 1   # Left arrow key = move left
     if key==65363: human_agent_action = 2   # Right arrow key = move right
