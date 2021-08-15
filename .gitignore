@@ -115,3 +115,6 @@ dmypy.json
 
 # VS Code
 .vscode/
+
+# MCK
+DataProducts/
