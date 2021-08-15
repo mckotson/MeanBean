@@ -29,19 +29,19 @@ GO TO 2 or 4
 import numpy as np
 import random, time
 
-bean_colors =  {0: np.array([255, 255, 255]),   # Nothing (blank space)
-                1: np.array([0, 0, 0]),         # Black
-                2: np.array([255, 0, 0]),       # Red
-                3: np.array([0, 0, 255]),       # Blue
-                4: np.array([200, 200, 0]),     # Yellow
-                5: np.array([0, 255, 0]),       # Green
-                6: np.array([255, 0, 255])}     # Purple
-
-def get_color(bean_int):
-    """
-    Given the integer corresponding to a bean type, return its RGB array.
-    """
-    return bean_colors[bean_int]
+#bean_colors =  {0: np.array([255, 255, 255]),   # Nothing (blank space)
+#                1: np.array([0, 0, 0]),         # Black
+#                2: np.array([255, 0, 0]),       # Red
+#                3: np.array([0, 0, 255]),       # Blue
+#                4: np.array([200, 200, 0]),     # Yellow
+#                5: np.array([0, 255, 0]),       # Green
+#                6: np.array([255, 0, 255])}     # Purple
+#
+#def get_color(bean_int):
+#    """
+#    Given the integer corresponding to a bean type, return its RGB array.
+#    """
+#    return bean_colors[bean_int]
 
 # Mapping used to track how orientation of controlled bean changes with rotation
 orientation_dict = {'above':{-1:'left', 1:'right'},
@@ -90,7 +90,7 @@ class BeanMachine():
         self.next1 = self.new_bean()
 
         # Show the next beans at the top
-        self.display_next_beans()
+        #self.display_next_beans()
 
         # Set up the game
         self.phase_map =   {0: self.check_loss,
@@ -107,6 +107,23 @@ class BeanMachine():
 
         # Create a container for the current action. See the movement method for options.
         self.action = 0
+
+    def reset(self):
+        """
+        Reset the game, clearing the field and score.
+        """
+        self.field    = np.zeros((13, 6), dtype=int)
+        self.score    = 0
+        self.combo    = 0
+        self.gameover = False
+
+        # Create the first controlled beans
+        self.next2 = self.new_bean()
+        self.next1 = self.new_bean()
+
+        self.phase     = 1
+        self.timesteps = 0
+        self.action    = 0
 
     def step(self):
         """
