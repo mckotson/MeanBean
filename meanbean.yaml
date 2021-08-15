@@ -9,9 +9,13 @@ dependencies:
   - scipy
   - jupyter
   - numba
+  - imageio
   - pip:
     - pynput
     - opencv-python
     - gym
+    - pyvirtualdisplay
+    - tensorflow
+    - tf-agents
     - -e ./BeanMachine
     - -e ./GymEnvironments/bean_gym
