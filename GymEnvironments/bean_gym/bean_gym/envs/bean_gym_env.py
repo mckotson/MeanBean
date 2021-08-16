@@ -85,7 +85,15 @@ class BeanGymEnv(gym.Env):
         score_before = self.BeanMachine.score
 
         self.BeanMachine.action = action
-        self.BeanMachine.step()
+
+        # Move through the MeanBean steps until you get to Phase 2, then return control.
+        # (If you start on Phase 2, go until the NEXT time you hit Phase 2 or Game Over.)
+        while True:
+            self.BeanMachine.step()
+
+            if self.BeanMachine.gameover: break
+            if self.BeanMachine.phase == 2: break
+        
         self.BeanMachine.action = 0   # Reset action
 
         score_after = self.BeanMachine.score
