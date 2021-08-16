@@ -78,6 +78,7 @@ class BeanMachine():
         self.score    = 0
         self.combo    = 0
         self.gameover = False
+        self.dropping = False   # Whether the controllable beans are hard-dropping
 
         # Set up and initialize display
         #self.display = 255*np.ones((13, 8, 3), dtype=int)
@@ -235,7 +236,9 @@ class BeanMachine():
             _ = self.rotate(1)
 
         if self.action == 5:
+            self.dropping = True
             _ = self.hard_drop()
+            self.dropping = False
 
         # Reset action
         self.action = 0
@@ -382,8 +385,9 @@ class BeanMachine():
 
         self.move_update(x1, y1, x2, y2)
 
-        # You get a point for hard dropping!
-        self.score += 1
+        if self.dropping:
+            # You get a point for hard dropping successfully!
+            self.score += 1
 
         return 1
 
